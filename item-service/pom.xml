@@ -3,10 +3,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.eureka</groupId>
-    <artifactId>eureka-service</artifactId>
+    <groupId>com.item</groupId>
+    <artifactId>item-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>eureka-service</name>
+    <name>item-service</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -14,7 +14,7 @@
         <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
     </properties>
 
-    <!-- 指定springboot版本-->
+    <!-- 指定spring-boot版本-->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -22,7 +22,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <!-- 指定springcloud版本-->
+    <!-- 指定spring-cloud版本-->
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -55,10 +55,10 @@
             </exclusions>
         </dependency>
 
-        <!-- 整合注册中心服务端 -->
+        <!-- 整合注册中心客户端 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
         <!-- POJO工具-->
@@ -67,6 +67,30 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+
+        <!-- api接口文档生成工具-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.swagger</groupId>
+                    <artifactId>swagger-models</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-models</artifactId>
+            <version>1.5.22</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+
     </dependencies>
 
     <build>

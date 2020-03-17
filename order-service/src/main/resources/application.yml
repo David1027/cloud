@@ -1,0 +1,19 @@
+# 端口
+server:
+  port: 8082
+
+# 服务名
+spring:
+  application:
+    name: order-service
+
+# 注册中心
+eureka:
+  # 客户端调用地址
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8100/eureka/
+    # 是否将自己注册到Eureka服务中
+    register-with-eureka: true
+    # 是否从Eureka中获取注册信息
+    fetch-registry: true
