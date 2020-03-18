@@ -50,8 +50,8 @@ public class OrderService {
   /**
    * 根据订单id查询订单数据
    *
-   * @param orderId
-   * @return
+   * @param orderId 订单主键
+   * @return Order 订单对象
    */
   public Order queryOrderById(String orderId) {
     Order order = ORDER_DATA.get(orderId);
@@ -67,7 +67,29 @@ public class OrderService {
       }
       orderDetail.setItem(item);
     }
+    return order;
+  }
 
+  /**
+   * 根据订单id查询订单数据
+   *
+   * @param orderId 订单主键
+   * @return Order 订单对象
+   */
+  public Order queryOrderByIdFallback(String orderId) {
+    Order order = ORDER_DATA.get(orderId);
+    if (null == order) {
+      return null;
+    }
+    List<OrderDetail> orderDetails = order.getOrderDetails();
+    for (OrderDetail orderDetail : orderDetails) {
+      // 通过商品微服务查询商品详细数据
+      Item item = this.itemService.queryItemByIdFallback(orderDetail.getItem().getId());
+      if (null == item) {
+        continue;
+      }
+      orderDetail.setItem(item);
+    }
     return order;
   }
 }

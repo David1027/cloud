@@ -33,4 +33,16 @@ public class OrderController {
   public Order queryOrderById(@PathVariable("orderId") String orderId) {
     return orderService.queryOrderById(orderId);
   }
+
+  /**
+   * 根据订单id，查询订单信息
+   *
+   * @param orderId 订单id
+   * @return Order 订单对象
+   */
+  @ApiOperation(value = "根据订单id查询订单信息-容错保护", notes = "案例订单id: 20200317001")
+  @GetMapping("orderFail/{orderId}")
+  public Order queryOrderByIdFallback(@PathVariable("orderId") String orderId) {
+    return orderService.queryOrderByIdFallback(orderId);
+  }
 }
