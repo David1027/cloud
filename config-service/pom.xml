@@ -3,10 +3,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.gateway</groupId>
-    <artifactId>gateway-service</artifactId>
+    <groupId>com.config</groupId>
+    <artifactId>config-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>gateway-service</name>
+    <name>config-service</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -48,28 +48,22 @@
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
 
-        <!-- 整合zuul服务网关-->
+        <!-- 整合配置中心服务端-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+            <artifactId>spring-cloud-config-server</artifactId>
         </dependency>
 
-        <!-- 整合注册中心客户端 -->
+        <!-- 整合eureka客户端-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
-        <!-- 整合配置中心客户端-->
+        <!--整合Spring Cloud Bus消息总站-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-config-client</artifactId>
-        </dependency>
-
-        <!--开启监控中心-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
+            <artifactId>spring-cloud-starter-bus-amqp</artifactId>
         </dependency>
 
         <!-- POJO工具-->

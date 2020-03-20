@@ -2,6 +2,7 @@ package com.item.item.controller;
 
 import javax.annotation.Resource;
 
+import com.item.config.JdbcConfigBean;
 import com.item.item.entity.Item;
 import com.item.item.service.ItemService;
 
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ItemController {
 
   @Resource private ItemService itemService;
+  @Resource private JdbcConfigBean jdbcConfigBean;
 
   /**
    * 对外提供接口服务，查询商品信息
@@ -32,5 +34,16 @@ public class ItemController {
   @GetMapping("item/{id}")
   public Item queryItemById(@PathVariable("id") Long id) {
     return itemService.queryItemById(id);
+  }
+
+  /**
+   * 测试方法，返回数据库连接对象
+   *
+   * @return String 数据库连接对象
+   */
+  @ApiOperation("返回数据库连接对象")
+  @GetMapping(value = "testConfig")
+  public String testConfig() {
+    return jdbcConfigBean.toString();
   }
 }

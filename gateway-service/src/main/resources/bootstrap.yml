@@ -1,0 +1,35 @@
+# 配置中心
+spring:
+  cloud:
+    config:
+      # 配置中心的地址
+      # uri: http://127.0.0.1:7788/
+      # 对应配置中心的应用名称，默认是本应用名，即spring.application.name,该名称要和git中的配置一致
+      name: zuul-service
+      # 对应配置服务中的{profile}
+      profile: dev
+      # 对应的分支
+      label: master
+      # 注册中心服务配置
+      discovery:
+        # 启用发现服务功能
+        enabled: true
+        # 指定配置中心工程的名称
+        service-id: config-service
+
+# 注册中心
+eureka:
+  # 客户端调用地址
+  client:
+    serviceUrl:
+      defaultZone: http://admin:123456@127.0.0.1:8100/eureka/,http://admin:123456@127.0.0.1:9100/eureka/
+    # 是否将自己注册到Eureka服务中
+    register-with-eureka: true
+    # 是否从Eureka中获取注册信息
+    fetch-registry: true
+  instance:
+    # 将自己的ip地址注册到Eureka服务中
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+    # 指定实例id
+    instance-id: ${spring.application.name}###${server.port}

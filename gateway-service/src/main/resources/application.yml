@@ -8,21 +8,21 @@ spring:
     name: gateway-service
 
 # 服务网关规则
-zuul:
-  # 定义服务转发规则
-  routes:
-    #服务网关请求商品规则
-    item-service:
-      # 匹配item-service的请求item-service服务
-      path: /item-service/**
-      # 注册中心商品对应的注册名
-      serviceid: item-service
-    #服务网关请求订单规则
-    order-service:
-      # 匹配order-service的请求order-service服务
-      path: /order-service/**
-      # 注册中心订单对应的注册名
-      serviceid: order-service
+#zuul:
+#  # 定义服务转发规则
+#  routes:
+#    #服务网关请求商品规则
+#    item-service:
+#      # 匹配item-service的请求item-service服务
+#      path: /item-service/**
+#      # 注册中心商品对应的注册名
+#      serviceid: item-service
+#    #服务网关请求订单规则
+#    order-service:
+#      # 匹配order-service的请求order-service服务
+#      path: /order-service/**
+#      # 注册中心订单对应的注册名
+#      serviceid: order-service
 
 # 注册中心
 eureka:
@@ -40,3 +40,11 @@ eureka:
     ip-address: 127.0.0.1
     # 指定实例id
     instance-id: ${spring.application.name}###${server.port}
+
+#开启所有端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
